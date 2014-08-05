@@ -30,7 +30,7 @@
 #   $user           - optional - defaults to "root"
 #   $group          - optional - defaults to "root"
 #   $groups         - optional - defaults to "yes"
-#   $instances      - optional - defaults to "UNLIMITED"
+#   $instances      - optional
 #   $only_from      - optional
 #   $wait           - optional - based on $protocol will default to "yes" for udp and "no" for tcp
 #   $xtype          - optional - determines the "type" of service, see xinetd.conf(5)
@@ -74,7 +74,7 @@ define xinetd::service (
   $flags                   = undef,
   $group                   = 'root',
   $groups                  = 'yes',
-  $instances               = 'UNLIMITED',
+  $instances               = undef,
   $per_source              = undef,
   $protocol                = 'tcp',
   $server_args             = undef,
@@ -126,6 +126,7 @@ define xinetd::service (
   # - $no_access
   # - $access_types
   # - $log_type
+  # - $instances
   file { "${xinetd::confdir}/${title}":
     ensure  => $ensure,
     owner   => 'root',

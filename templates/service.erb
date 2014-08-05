@@ -27,6 +27,9 @@ service <%= @service_name %>
 <% if @per_source -%>
         per_source      = <%= @per_source %>
 <% end -%>
+<% if @instances -%>
+        instances       = <%= @instances %>
+<% end -%>
 <% if @log_on_success -%>
         log_on_success <%= @log_on_success_operator %> <%= @log_on_success %>
 <% end -%>
